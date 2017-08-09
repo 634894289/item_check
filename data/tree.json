@@ -1,0 +1,8 @@
+[
+    { "id" : "json1", "parent" : "#", "text" : "item 1" },
+    { "id" : "json2", "parent" : "json1", "text" : "item 1.1" },
+    { "id" : "json3", "parent" : "json1", "text" : "item 1.2" },
+    { "id" : "json4", "parent" : "json3", "text" : "输入文字....." },
+    { "id" : "json5", "parent" : "json3", "text" : "输入文字....." },
+    { "id" : "json6", "parent" : "json1", "text" : "item 1.3" }
+]

@@ -1,0 +1,156 @@
+/*reset*/
+html body hr {
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  list-style: none;
+}
+
+/*header*/
+html {
+  background-color: #eeeeee;
+}
+
+.wrap {
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  background-color: #fff;
+  font-family: 微软雅黑;
+  .header {
+    position: relative;
+    height: 40px;
+    border-bottom: 1px solid #797979;
+    border-top: 1px solid #797979;
+    background-color: #0099cc;
+    .logo {
+      height: 32px;
+      width: 32px;
+      float: left;
+      margin: 3px 5px;
+      background: url("../images/logo.jpg") no-repeat;
+      background-size: 100% 100%;
+    }
+    .header-text {
+      float: left;
+      font-size: 24px;
+      color: #ffff33;
+      margin: 2px 6px;
+      line-height: 34px;
+    }
+    .after-login {
+      float: right;
+      line-height: 40px;
+      margin-right: 18px;
+      .js-login-time {
+        margin-right: 26px;
+      }
+      .js-exit{
+        color: #0000ff;
+        text-decoration: underline;
+      }
+      .js-login-time{
+        color: #fff;
+      }
+    }
+  }
+  /*login*/
+  .login-form {
+    border: 1px solid #000;
+    width: 400px;
+    margin: 50px auto;
+    background-color: #e4e4e4;
+    .row{
+      padding: 0;
+    }
+    hr {
+      background-color: #000;
+      height: 1px;
+      border: none;
+    }
+    .login-header {
+      font-size: 18px;
+      margin: 8px 10px;
+      font-weight: bold;
+    }
+    .form-content {
+      margin: 12px 9px;
+      label {
+        font-size: 12px;
+        line-height: 18px;
+      }
+      .form-error,
+      .input-error{
+        color: red;
+        font-size: 12px;
+      }
+      button {
+        border-bottom: 2px solid #898989;
+        border-right: 2px solid #898989;
+        width: 100px;
+        height: 25px;
+        line-height: 15px;
+        text-align: center;
+      }
+    }
+  }
+  /*home*/
+  .left-content {
+    position: absolute;
+    top:40px;
+    bottom:0;
+    left: 0;
+    border-left: 1px solid #797979;
+    border-right: 1px solid #797979;
+    .nav-height() {
+      height: 18px;
+      line-height: 18px;
+    }
+    &.col-sm-2 {
+      padding: 0px;
+    }
+    .active {
+      background-color: #bcbcbc;
+    }
+    .my-nav {
+      border: 1px solid #797979;
+      border-left: none;
+    }
+    .nav-wrap {
+      height: 130px;
+      border: 1px solid #a9a9a9;
+      border-left: none;
+      .nav-item {
+        height: 200px;
+      }
+      overflow-y: scroll;
+    }
+    .reset-content {
+      border-right: 1px solid #797979;
+      border-left: 1px solid #797979;
+    }
+  }
+  .right-content{
+    position: absolute;
+    top:40px;
+    bottom:0;
+    right: 0;
+    &.col-sm-10 {
+      padding: 4px 12px 27px 6px;
+    }
+    border: 1px solid #797979;
+    border-left: none;
+    margin-top: -1px;
+    .table td,
+    .table th {
+      border: 1px solid #797979;
+      font-size: 14px;
+    }
+    .table th{
+      background-color: #999;
+      color: #fff;
+    }
+  }
+}
