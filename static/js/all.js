@@ -67,27 +67,33 @@ var myFunction = {
             data:{'flag': 1},
             dataType:"json",
             success:function(data){
-                $('.right-content').html("");
-                var table = $("<table class='table table-bordered table-responsive table-striped'></table>");
-                var thead = $("<thead></thead>");
-                var thead_tr = $("<tr></tr>");
-                for(var i=1; i<8; i++){
-                    var thead_tr_th = $("<th>Column"+i+"</th>")
-                    thead_tr.append(thead_tr_th);
+                $('.table-content').html("");
+                if(!$.isEmptyObject(data)){
+                    $(".is-content").hide();
+                    var table = $("<table class='table table-bordered table-responsive table-striped'></table>");
+                    var thead = $("<thead></thead>");
+                    var thead_tr = $("<tr></tr>");
+                    for(var i=1; i<8; i++){
+                        var thead_tr_th = $("<th>Column"+i+"</th>")
+                        thead_tr.append(thead_tr_th);
+                    }
+                    thead.append(thead_tr);
+                    table.append(thead);
+                    // data = JSON.parse(data);
+                    var tbody = $("<tbody></tbody>");
+                    $.each(data.tableContent, function () {
+                        var tbody_tr = $("<tr></tr>");
+                        tbody_tr.append("<td>" +this.Column1+ "</td>" + "<td>" +this.Column2+ "</td>" + "<td>" +this.Column3+ "</td>" +
+                                "<td>" +this.Column4+ "</td>" + "<td>" +this.Column5+ "</td>" + "<td>" +this.Column6+ "</td>" +
+                                "<td>" +this.Column7+ "</td>");
+                        tbody.append(tbody_tr);
+                    });
+                    table.append(tbody);
+                    $('.table-content').empty().append(table);
                 }
-                thead.append(thead_tr);
-                table.append(thead);
-                // data = JSON.parse(data);
-                var tbody = $("<tbody></tbody>");
-                $.each(data.tableContent, function () {
-                    var tbody_tr = $("<tr></tr>");
-                    tbody_tr.append("<td>" +this.Column1+ "</td>" + "<td>" +this.Column2+ "</td>" + "<td>" +this.Column3+ "</td>" +
-                            "<td>" +this.Column4+ "</td>" + "<td>" +this.Column5+ "</td>" + "<td>" +this.Column6+ "</td>" +
-                            "<td>" +this.Column7+ "</td>");
-                    tbody.append(tbody_tr);
-                });
-                table.append(tbody);
-                $('.right-content').empty().append(table);
+                else {
+                    $(".is-content").show();
+                }
             },
             error:function(err){
                 console.log(err);
@@ -98,7 +104,7 @@ var myFunction = {
 
     //获取树视图的数据
     get_tree_content: function () {
-         $('.right-content').html("");
+         $('.table-content').html("");
         var $url = 'get_content/get_json_content';
         $.ajax({
             type:"post",
@@ -107,11 +113,13 @@ var myFunction = {
             dataType:"json",
             success:function(data){
                 // data = JSON.parse(data);
-                $('.right-content')
-                        // .on("changed.jstree", function (e, data) {
-                        //     console.log(data.changed.selected); // newly selected
-                        //     console.log(data.changed.deselected); // newly deselected
-                        //  })
+                if(!$.isEmptyObject(data)){
+                    $(".is-content").hide();
+                    $('.table-content')
+                    // .on("changed.jstree", function (e, data) {
+                    //     console.log(data.changed.selected); // newly selected
+                    //     console.log(data.changed.deselected); // newly deselected
+                    //  })
                         .data('jstree', false).empty()
                         .jstree({
                             'core': {
@@ -130,7 +138,11 @@ var myFunction = {
                             // },
                             "plugins" : ["state"]
                             // "plugins" : ["changed","contextmenu","conditionalselect","dnd","checkbox","state"]
-                });
+                        });
+                }
+                else {
+                    $(".is-content").show();
+                }
             },
             error:function(err){
                 console.log(err);

@@ -34,7 +34,7 @@
        登陆失败，密码或用户名不正确！
      </div>
      <div  class="text-right">
-       <button type="submit" class="login-submit">登陆</button>
+       <button type="submit" class="login-submit">登录</button>
      </div>
    </div>
   </form>

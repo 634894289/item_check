@@ -21,6 +21,9 @@
             </div>
             <div class="reset-content"></div>
         </div>
-      <div class="right-content col-sm-10"></div>
+      <div class="right-content col-sm-10">
+        <div class="table-content"></div>
+        <div class="is-content" style="display: none;">暂无数据........</div>
+      </div>
 </body>
 </html>

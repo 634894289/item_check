@@ -5,9 +5,9 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <base href="<?php echo base_url()?>">
-  <link rel="stylesheet" href="<?php echo base_url();?>static/css/bootstrap.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>static/css/jqTree.min.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>static/css/style.css">
+  <link rel="stylesheet" href="static/css/bootstrap.css">
+  <link rel="stylesheet" href="static/css/jqTree.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body class="wrap">
   <header class="header">
@@ -20,8 +20,8 @@
   </header>
 </body>
 
-<script src="<?=base_url()?>static/js/jquery-3.2.1.min.js"></script>
-<script src="<?=base_url()?>static/js/bootstrap.js"></script>
-<script src="<?=base_url()?>static/js/jstree.min.js"></script>
-<script src="<?=base_url()?>static/js/all.js"></script>
+<script src="static/js/jquery-3.2.1.min.js"></script>
+<script src="static/js/bootstrap.js"></script>
+<script src="static/js/jstree.min.js"></script>
+<script src="static/js/all.js"></script>
 </html>
