@@ -18,16 +18,16 @@
        <label for = "user_name">用户名：</label>
        <input type="text" name="user_name" id="user_name" class="form-control" placeholder="请输入用户名"
               value="<?php echo set_value('user_name'); ?>">
-       <div>
-         <span class="input-error"><?php echo form_error('user_name'); ?></span>
+       <div class="input-error">
+         <span><?php echo form_error('user_name'); ?></span>
        </div>
      </div>
      <div class="form-group">
        <label for = "user_password">密码：</label>
        <input type="password" name="user_password" id="user_password" class="form-control" placeholder="请输入密码"
               value="<?php echo set_value('user_password'); ?>">
-       <div >
-         <span class="input-error"><?php echo form_error('user_password'); ?></span>
+       <div class="input-error">
+         <span><?php echo form_error('user_password'); ?></span>
        </div>
      </div>
      <div class="form-error" style="visibility: hidden">

@@ -87,6 +87,9 @@ html {
   color: red;
   font-size: 12px;
 }
+.wrap .login-form .form-content .form-error {
+  margin-top: -15px;
+}
 .wrap .login-form .form-content button {
   border-bottom: 2px solid #898989;
   border-right: 2px solid #898989;
@@ -94,6 +97,14 @@ html {
   height: 25px;
   line-height: 15px;
   text-align: center;
+}
+.wrap .login-form .form-content .form-group {
+  margin-bottom: 22px;
+  position: relative;
+}
+.wrap .login-form .form-content .form-group .input-error {
+  position: absolute;
+  margin-top: 5px;
 }
 .wrap .left-content {
   position: absolute;
