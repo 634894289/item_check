@@ -1,9 +1,9 @@
 <IfModule authz_core_module>
 Require all granted
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php/$1 [L]
+#RewriteEngine On
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ /php_projects/item_chec/index.php/$1 [L]
 </IfModule>
 <IfModule !authz_core_module>
 Deny from all
@@ -11,3 +11,12 @@ Deny from all
 <Files *>
     Options -Indexes
 </Files>
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>
+<IfModule !mod_rewrite.c>
+    ErrorDocument "";
+</IfModule>
