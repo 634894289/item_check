@@ -8,12 +8,17 @@
  */
 
 class Home extends CI_Controller{
-    public function index(){
-        if(isset($_SESSION['if_login'])){
-            $this->load->view('common/common');
-            $this->load->view('home');
+    public function index()
+    {
+        if (isset($_SESSION['is_login']))
+        {
+            $data['head'] = $this->load->view('common/head_content','',true);
+            $data['header'] = $this->load->view('common/header_content','',true);
+            $data['script'] = $this->load->view('common/script_content','',true);
+            $this->load->view('home',$data);
         }
-        else{
+        else
+        {
             redirect(base_url().'login');
         }
     }

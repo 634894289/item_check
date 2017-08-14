@@ -1,14 +1,12 @@
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <?php echo $head ;?>
   <title>登陆界面</title>
 </head>
 <body class="wrap">
-  <input type="hidden" value="<?=$err_mess?>" class="js_check_user">
-  <form role="form" method="post" action="<?=base_url().'login'?>" class="login-form">
+  <?php echo $header ;?>
+  <input type="hidden" value="<?=$is_err?>" class="js_check_login">
+  <form role="form" method="post" action="<?=base_url().'login/check_login'?>" class="login-form">
     <div class="login-header" >
       登陆
     </div>
@@ -30,8 +28,17 @@
          <span><?php echo form_error('user_password'); ?></span>
        </div>
      </div>
-     <div class="form-error" style="visibility: hidden">
-       登陆失败，密码或用户名不正确！
+     <div class="login-error" style="visibility: hidden">
+         <?php
+            if ($is_err === '1')
+            {
+                echo $err_message;
+            }
+            else
+            {
+              echo 'no error';
+            }
+         ?>
      </div>
      <div  class="text-right">
        <button type="submit" class="login-submit">登录</button>
@@ -39,4 +46,5 @@
    </div>
   </form>
 </body>
+<?php echo $script ;?>
 </html>

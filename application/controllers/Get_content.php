@@ -8,21 +8,26 @@
  */
 
 class Get_content extends CI_Controller{
-    public function get_json_content(){
-        header("Content-type:text/html;charset=utf-8");
-//        header('content-type:application:json');
-        header('Access-Control-Allow-Origin:*');
-        header('Access-Control-Allow-Methods:POST');
-        header('Access-Control-Allow-Headers:x-requested-with,content-type');
-        $flag = $this->input->post('flag');
-        if($flag === "1"){
-            $filename = base_url().'data/table.json';
-        }
-        else{
-            $filename = base_url().'/data/tree.json';
-        }
-        $json = file_get_contents($filename);
-        echo $json;
+    public function get_json_content()
+    {
+       if (isset($_SESSION['is_login']))
+       {
+           header("Content-type:text/html;charset=utf-8");
+           $this->load->model('Json_data');
+           $flag = $this->input->post('flag');
+           $bool = $this->Json_data->get_json_data($flag);
+           if($bool["is_err"] === '0')
+           {
+              echo $bool["json"];
+           }
+           if($bool["is_err"] === '1')
+           {
+                echo json_encode(null);
+           }
+//            echo json_encode($bool,true);
+//           $json = file_get_contents($filename);//严谨性
+
+       }
     }
 
 }

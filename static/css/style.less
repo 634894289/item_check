@@ -50,7 +50,12 @@ html {
       .js-exit{
         color: #0000ff;
         text-decoration: underline;
+        &:hover{
+          color:red;
+          cursor: hand;
+        }
       }
+
       .js-login-time{
         color: #fff;
       }
@@ -81,12 +86,12 @@ html {
         font-size: 12px;
         line-height: 18px;
       }
-      .form-error,
+      .login-error,
       .input-error{
         color: red;
         font-size: 12px;
       }
-      .form-error{
+      .login-error{
         margin-top: -15px;
       }
       button {
@@ -164,7 +169,7 @@ html {
       background-color: #999;
       color: #fff;
     }
-    .is-content{
+    .is-have-content{
       width: 100%;
       font-size: 20px;
       text-align: center;

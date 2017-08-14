@@ -4,9 +4,9 @@
 $(function () {
 
     //输入密码或用户名错误时，显示错误信息
-    if($('.js_check_user').val() == 1){
-        $('.form-error').css('visibility','visible');
-        $('.js_check_user').val(0);
+    if ($('.js_check_login').val() == 1) {
+        $('.login-error').css('visibility','visible');
+        $('.js_check_login').val(0);
     }
 
     //点击列表视图时触发的事件
@@ -26,8 +26,7 @@ $(function () {
     });
 
     //登陆成功后执行的操作
-    if($('.js-if-login').val() == 1){
-        $(".after-login").css('display','block');
+    if ($('.js-is-login').val() == 1) {
         myFunction.get_table_content();
         setInterval(function () {
             $(".js-login-time").text(myFunction.set_time());
@@ -47,7 +46,7 @@ var myFunction = {
     //阻止默认行为
     stopEvent: function (e) {
         var e = e || window.event;
-        if(e.preventDefault){
+        if (e.preventDefault) {
             e.preventDefault();
             e.stopPropagation();
         }
@@ -68,12 +67,12 @@ var myFunction = {
             dataType:"json",
             success:function(data){
                 $('.table-content').html("");
-                if(!$.isEmptyObject(data)){
-                    $(".is-content").hide();
+                if (!$.isEmptyObject(data)) {
+                    $(".is-have-content").hide();
                     var table = $("<table class='table table-bordered table-responsive table-striped'></table>");
                     var thead = $("<thead></thead>");
                     var thead_tr = $("<tr></tr>");
-                    for(var i=1; i<8; i++){
+                    for(var i=1; i<8; i++) {
                         var thead_tr_th = $("<th>Column"+i+"</th>")
                         thead_tr.append(thead_tr_th);
                     }
@@ -92,7 +91,7 @@ var myFunction = {
                     $('.table-content').empty().append(table);
                 }
                 else {
-                    $(".is-content").show();
+                    $(".is-have-content").show();
                 }
             },
             error:function(err){
@@ -104,7 +103,7 @@ var myFunction = {
 
     //获取树视图的数据
     get_tree_content: function () {
-         $('.table-content').html("");
+        $('.table-content').html("");
         var $url = 'get_content/get_json_content';
         $.ajax({
             type:"post",
@@ -112,9 +111,8 @@ var myFunction = {
             data:{'flag': 0},
             dataType:"json",
             success:function(data){
-                // data = JSON.parse(data);
-                if(!$.isEmptyObject(data)){
-                    $(".is-content").hide();
+                if (!$.isEmptyObject(data)) {
+                    $(".is-have-content").hide();
                     $('.table-content')
                     // .on("changed.jstree", function (e, data) {
                     //     console.log(data.changed.selected); // newly selected
@@ -141,7 +139,7 @@ var myFunction = {
                         });
                 }
                 else {
-                    $(".is-content").show();
+                    $(".is-have-content").show();
                 }
             },
             error:function(err){
@@ -159,7 +157,7 @@ var myFunction = {
             url:$url,
             dataType:"text",
             success:function(data){
-                if(data == "success"){
+                if (data == "success") {
                     location.href = "login";
                     return true;
                 }

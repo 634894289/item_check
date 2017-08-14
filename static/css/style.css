@@ -53,6 +53,10 @@ html {
   color: #0000ff;
   text-decoration: underline;
 }
+.wrap .header .after-login .js-exit:hover {
+  color: red;
+  cursor: hand;
+}
 .wrap .header .after-login .js-login-time {
   color: #fff;
 }
@@ -82,12 +86,12 @@ html {
   font-size: 12px;
   line-height: 18px;
 }
-.wrap .login-form .form-content .form-error,
+.wrap .login-form .form-content .login-error,
 .wrap .login-form .form-content .input-error {
   color: red;
   font-size: 12px;
 }
-.wrap .login-form .form-content .form-error {
+.wrap .login-form .form-content .login-error {
   margin-top: -15px;
 }
 .wrap .login-form .form-content button {
@@ -159,7 +163,7 @@ html {
   background-color: #999;
   color: #fff;
 }
-.wrap .right-content .is-content {
+.wrap .right-content .is-have-content {
   width: 100%;
   font-size: 20px;
   text-align: center;

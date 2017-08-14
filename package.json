@@ -1,0 +1,19 @@
+{
+  "name": "item_chec",
+  "version": "1.0.0",
+  "description": "What is CodeIgniter\r ###################",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/634894289/item_check.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/634894289/item_check/issues"
+  },
+  "homepage": "https://github.com/634894289/item_check#readme"
+}

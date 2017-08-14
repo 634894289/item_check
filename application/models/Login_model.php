@@ -7,7 +7,8 @@
  */
 
 class Login_model extends CI_Model{
-    public function check_password($user_name){
+    public function check_password($user_name)
+    {
         $res = $this->db->where('user_name',$user_name)->from('user')->get();
         $result = $res->row();
         if (isset($result))

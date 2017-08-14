@@ -1,15 +1,13 @@
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <?php echo $head ;?>
+  <title>主页</title>
 </head>
 <body class="wrap">
-<input type="hidden" class="js-if-login" value="<?php echo isset($_SESSION['if_login'])? $_SESSION['if_login'] : 0 ;?>">
+<?php echo $header ;?>
+<input type="hidden" class="js-is-login" value="<?php echo isset($_SESSION['is_login'])? $_SESSION['is_login'] : 0 ;?>">
     <input type="hidden" value="<?=base_url()?>" class="get-base-url">
-        <div class="left-content col-sm-2 text-lef">
+        <div class="left-content col-sm-2 text-lef clearfix">
             <div class="my-nav active">
                 <p>导航栏</p>
             </div>
@@ -21,9 +19,10 @@
             </div>
             <div class="reset-content"></div>
         </div>
-      <div class="right-content col-sm-10">
+      <div class="right-content col-sm-10 clearfix">
         <div class="table-content"></div>
-        <div class="is-content" style="display: none;">暂无数据........</div>
+        <div class="is-have-content" style="display: none;">暂无数据........</div>
       </div>
 </body>
+<?php echo $script ;?>
 </html>
