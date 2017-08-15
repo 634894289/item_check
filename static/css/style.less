@@ -1,10 +1,12 @@
 /*reset*/
-html body hr {
+*{
   padding: 0;
   margin: 0;
 }
-body{
+body,
+html{
   height: 100%;
+  width: 100%;
 }
 
 ul li {
@@ -18,6 +20,7 @@ html {
 
 .wrap {
   width: 100%;
+  height: 100%;
   position: relative;
   margin: 0 auto;
   background-color: #fff;
@@ -28,6 +31,7 @@ html {
     border-bottom: 1px solid #797979;
     border-top: 1px solid #797979;
     background-color: #0099cc;
+    box-sizing: border-box;
     .logo {
       height: 32px;
       width: 32px;
@@ -129,6 +133,7 @@ html {
     }
     &.col-sm-2 {
       padding: 0px;
+      //width: 16.66%;
     }
     .active {
       background-color: #bcbcbc;
@@ -158,6 +163,7 @@ html {
     right: 0;
     &.col-sm-10 {
       padding: 4px 12px 27px 6px;
+      //width: 83.33%;
     }
     border: 1px solid #797979;
     border-left: none;

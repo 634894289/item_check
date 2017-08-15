@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <?php echo $head ;?>
   <title>登陆界面</title>
