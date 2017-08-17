@@ -19,10 +19,12 @@ class Get_content extends CI_Controller{
            if(!$data["err_message"])
            {
               echo $data["json"];
+              return;
            }
-           if($data["err_message"])
+           else
            {
                 echo json_encode(array('err_message'=>$data["err_message"]));
+               return;
            }
        }
     }
