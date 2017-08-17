@@ -15,18 +15,15 @@ class Get_content extends CI_Controller{
            header("Content-type:text/html;charset=utf-8");
            $this->load->model('Json_data');
            $flag = $this->input->post('flag');
-           $bool = $this->Json_data->get_json_data($flag);
-           if($bool["is_err"] === '0')
+           $data = $this->Json_data->get_json_data($flag);
+           if(!$data["err_message"])
            {
-              echo $bool["json"];
+              echo $data["json"];
            }
-           if($bool["is_err"] === '1')
+           if($data["err_message"])
            {
-                echo json_encode(null);
+                echo json_encode(array('err_message'=>$data["err_message"]));
            }
-//            echo json_encode($bool,true);
-//           $json = file_get_contents($filename);//严谨性
-
        }
     }
 

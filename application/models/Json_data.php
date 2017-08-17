@@ -12,9 +12,14 @@ class Json_data extends CI_Model{
         {
             $filename = 'data/table.json';
         }
-        else if($flag == '0')
+        else if($flag === "0")
         {
             $filename = 'data/tree.json';
+        }
+        else
+        {
+            $my_data['err_message'] = "不知道读取哪个文件";
+            return  $my_data;
         }
         if (is_file($filename))
         {
@@ -23,26 +28,22 @@ class Json_data extends CI_Model{
                 $json = file_get_contents($filename);
                 if($json === false)
                 {
-                    $my_data['is_err'] = "1";
                     $my_data['err_message'] = "文件读取失败";
                 }
                 else
                 {
-
-                    $my_data['is_err'] = "0";
+                    $my_data['err_message'] = "";
                     $my_data['json'] = $json;
                 }
 
             }
             else
             {
-                $my_data['is_err'] = "1";
                 $my_data['err_message'] = "文件不可读";
             }
         }
         else
         {
-            $my_data['is_err'] = "1";
             $my_data['err_message'] = "文件不存在";
         }
         return $my_data;

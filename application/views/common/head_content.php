@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="static/css/bootstrap.css">
 <link rel="stylesheet" href="static/css/jqTree.min.css">
 <link rel="stylesheet" href="static/css/style.css">
+<!--//用于兼容IE9一下的HTML5标签-->
 <!--[if lt IE 9]>
 <script src="static/js/html5shiv.min.js"></script>
 <script src="static/js/respond.min.js"></script>

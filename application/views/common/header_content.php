@@ -1,4 +1,4 @@
-<div class="header">
+<header class="header">
     <div class="logo"></div>
     <div class="header-text">考核Demo</div>
     <?php
@@ -11,4 +11,4 @@
         <?php
     }
     ?>
-</div>
+</header>

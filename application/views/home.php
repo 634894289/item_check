@@ -23,7 +23,10 @@
       <div class="right-content col-sm-10 clearfix">
         <div class="table-content"></div>
         <div class="is-have-content" style="display: none;">暂无数据........</div>
+        <div class="is-have-error" style="display: none;">服务器出错，玩命抢修中！</div>
+        <!-- 该隐藏域用于获取服务器出错的具体信息-->
+        <input type="hidden" class="err_message" value="">
       </div>
-</body>
 <?php echo $script ;?>
+</body>
 </html>

@@ -3,10 +3,26 @@
  */
 $(function () {
 
+    //更改表单输入框时触发的事件
+    $('#user_name').click(function () {
+        $('.js-user-name').hide();
+    });
+    $('#user_password').click(function () {
+        $('.js-user-password').hide();
+    })
+
+    $('.login-form').click(function () {
+        $('.login-error').css('visibility','hidden');
+    });
+
     //输入密码或用户名错误时，显示错误信息
-    if ($('.js_check_login').val() == 1) {
+    if ($('.js_check_login').val() !== "-1") {
         $('.login-error').css('visibility','visible');
+        // $('.js_check_login').attr('data-message',$('.js_check_login').val());
         $('.js_check_login').val(0);
+    }
+    else {
+        $('.login-error').css('visibility','hidden');
     }
 
     //点击列表视图时触发的事件
@@ -39,9 +55,25 @@ $(function () {
         myFunction.stopEvent(e);
     });
 
+
 });
 
 var myFunction = {
+    //表单检测
+    formCheck: function (form) {
+        var flag = true;
+        if (form.user_name.value=='') {
+            $('.js-user-name').show();
+            form.user_name.focus();
+            flag = false;
+        }
+        if (form.user_password.value=='') {
+            $('.js-user-password').show();
+            form.user_name.focus();
+            flag = false;
+        }
+        return flag;
+    },
 
     //阻止默认行为
     stopEvent: function (e) {
@@ -58,7 +90,6 @@ var myFunction = {
 
     //获取列表视图的数据
     get_table_content: function (){
-        // $('.right-content').html("");
         var $url = 'get_content/get_json_content';
         $.ajax({
             type:"post",
@@ -67,31 +98,39 @@ var myFunction = {
             dataType:"json",
             success:function(data){
                 $('.table-content').html("");
-                if (!$.isEmptyObject(data)) {
-                    $(".is-have-content").hide();
-                    var table = $("<table class='table table-bordered table-responsive table-striped'></table>");
-                    var thead = $("<thead></thead>");
-                    var thead_tr = $("<tr></tr>");
-                    for(var i=1; i<8; i++) {
-                        var thead_tr_th = $("<th>Column"+i+"</th>")
-                        thead_tr.append(thead_tr_th);
+                if (!data.err_message) {
+                    if (!$.isEmptyObject(data)) {
+                        $(".is-have-content").hide();
+                        $(".is-have-error").hide();
+                        $('.err_message').val('');
+                        var table = $("<table class='table table-bordered table-responsive table-striped'></table>");
+                        var thead = $("<thead></thead>");
+                        var thead_tr = $("<tr></tr>");
+                        for(var i=1; i<8; i++) {
+                            var thead_tr_th = $("<th>Column"+i+"</th>")
+                            thead_tr.append(thead_tr_th);
+                        }
+                        thead.append(thead_tr);
+                        table.append(thead);
+                        // data = JSON.parse(data);
+                        var tbody = $("<tbody></tbody>");
+                        $.each(data.tableContent, function () {
+                            var tbody_tr = $("<tr></tr>");
+                            tbody_tr.append("<td>" +this.Column1+ "</td>" + "<td>" +this.Column2+ "</td>" + "<td>" +this.Column3+ "</td>" +
+                                    "<td>" +this.Column4+ "</td>" + "<td>" +this.Column5+ "</td>" + "<td>" +this.Column6+ "</td>" +
+                                    "<td>" +this.Column7+ "</td>");
+                            tbody.append(tbody_tr);
+                        });
+                        table.append(tbody);
+                        $('.table-content').empty().append(table);
                     }
-                    thead.append(thead_tr);
-                    table.append(thead);
-                    // data = JSON.parse(data);
-                    var tbody = $("<tbody></tbody>");
-                    $.each(data.tableContent, function () {
-                        var tbody_tr = $("<tr></tr>");
-                        tbody_tr.append("<td>" +this.Column1+ "</td>" + "<td>" +this.Column2+ "</td>" + "<td>" +this.Column3+ "</td>" +
-                                "<td>" +this.Column4+ "</td>" + "<td>" +this.Column5+ "</td>" + "<td>" +this.Column6+ "</td>" +
-                                "<td>" +this.Column7+ "</td>");
-                        tbody.append(tbody_tr);
-                    });
-                    table.append(tbody);
-                    $('.table-content').empty().append(table);
+                    else {
+                        $(".is-have-content").show();
+                    }
                 }
                 else {
-                    $(".is-have-content").show();
+                    $(".is-have-error").show();
+                    $('.err_message').text(data.err_message);
                 }
             },
             error:function(err){
@@ -111,35 +150,43 @@ var myFunction = {
             data:{'flag': 0},
             dataType:"json",
             success:function(data){
-                if (!$.isEmptyObject(data)) {
-                    $(".is-have-content").hide();
-                    $('.table-content')
-                    // .on("changed.jstree", function (e, data) {
-                    //     console.log(data.changed.selected); // newly selected
-                    //     console.log(data.changed.deselected); // newly deselected
-                    //  })
-                        .data('jstree', false).empty()
-                        .jstree({
-                            'core': {
-                                "animation" : 0,
-                                "themes" : { "dots": false,"icons":false ,"stripes":true},
-                                "check_callback" : true,
-                                "multiple" : false,
-                                'data' : data
-                            },
-                            "state" : { "key" : "demo2" },
-                            // "checkbox" : {
-                            //     "keep_selected_style" : false
-                            // },
-                            // "conditionalselect" : function (node, event) {   //更改选中节点时的样式
-                            //     return false;
-                            // },
-                            "plugins" : ["state"]
-                            // "plugins" : ["changed","contextmenu","conditionalselect","dnd","checkbox","state"]
-                        });
+                if(!data.err_message) {
+                    if (!$.isEmptyObject(data)) {
+                        $(".is-have-content").hide();
+                        $(".is-have-error").hide();
+                        $('.err_message').val('');
+                        $('.table-content')
+                        // .on("changed.jstree", function (e, data) {
+                        //     console.log(data.changed.selected); // newly selected
+                        //     console.log(data.changed.deselected); // newly deselected
+                        //  })
+                                .data('jstree', false).empty()
+                                .jstree({
+                                    'core': {
+                                        "animation" : 0,
+                                        "themes" : { "dots": false,"icons":false ,"stripes":true},
+                                        "check_callback" : true,
+                                        "multiple" : false,
+                                        'data' : data
+                                    },
+                                    "state" : { "key" : "demo2" },
+                                    // "checkbox" : {
+                                    //     "keep_selected_style" : false
+                                    // },
+                                    // "conditionalselect" : function (node, event) {   //更改选中节点时的样式
+                                    //     return false;
+                                    // },
+                                    "plugins" : ["state"]
+                                    // "plugins" : ["changed","contextmenu","conditionalselect","dnd","checkbox","state"]
+                                });
+                    }
+                    else {
+                        $(".is-have-content").show();
+                    }
                 }
                 else {
-                    $(".is-have-content").show();
+                    $(".is-have-error").show();
+                    $('.err_message').val(data.err_message);
                 }
             },
             error:function(err){

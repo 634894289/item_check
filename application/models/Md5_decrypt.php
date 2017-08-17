@@ -7,7 +7,7 @@
  */
 
 class Md5_decrypt extends CI_Model{
-    public function decrypt($user_name,$key='ip123')
+    public function decrypt($user_name)
     {
         $filename = 'data/user.txt';
         if (is_file($filename))
@@ -22,6 +22,7 @@ class Md5_decrypt extends CI_Model{
                 }
                 else
                 {
+                    $key='ip123';
                     $content = explode(';', $content);
                     $key = md5($key);
                     foreach ($content as $data)

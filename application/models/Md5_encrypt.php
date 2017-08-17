@@ -6,8 +6,9 @@
  * Time: 16:05
  */
 class Md5_encrypt extends CI_Model{
-    public function encrypt($data, $key='ip123')
+    public function encrypt($data)
     {
+        $key='ip123';
         $key = md5($key);
         $x = 0;
         $char = "";
